@@ -1,0 +1,40 @@
+<!doctype html>
+<html ng-app>
+<head>
+	<script src="http://code.angularjs.org/1.0.6/angular.min.js"></script>
+	<script src="script.js"></script>
+</head>
+<body>
+
+  <div ng-controller="FormController">
+
+	<div ng-switch="getCurrentStep()">		
+      <div ng-switch-when="signup">	
+	  	  <label>Email:</label><br>
+		  <input type="text" ng-model="user.email" required/> <br><br>
+
+		  <label>Password:</label><br>
+		  <input type="password" ng-model="user.password" required/> <br><br>
+
+		  <button ng-click="nextStep()">Next</button>
+	  </div>
+
+      <div ng-switch-when="settings">	
+	  	  <label>Secondary Email:</label><br>
+		  <input type="text" ng-model="user.payemail" required/> <br><br>
+
+		  <button ng-click="previousStep()">Previous</button>
+		  <button ng-click="nextStep()">Next</button>
+	  </div>
+
+     </div>
+			
+	<hr/>
+    <div>You are currently on {{getCurrentStep()}} step</div>
+	
+	Debug View:
+    <pre>user={{user | json}}</pre>
+    
+  </div>
+</body>
+</html>
